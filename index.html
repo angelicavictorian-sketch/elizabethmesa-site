@@ -146,6 +146,22 @@ nav.scrolled{
   letter-spacing:.5em;color:var(--gold);
   text-transform:uppercase;margin-bottom:30px;
 }
+.hero-category{
+  display:flex;align-items:center;justify-content:center;
+  gap:16px;margin-bottom:22px;
+  font-family:'Montserrat',sans-serif;
+  font-size:.52rem;font-weight:600;
+  letter-spacing:.42em;color:var(--gold);
+  text-transform:uppercase;
+}
+.hero-category::before,.hero-category::after{
+  content:'';display:block;
+  width:40px;height:1px;flex-shrink:0;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.7));
+}
+.hero-category::after{
+  background:linear-gradient(90deg,rgba(201,168,76,.7),transparent);
+}
 .hero-name{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(4rem,10vw,9.5rem);
@@ -613,6 +629,7 @@ footer{
   <div class="hero-stars"></div>
   <div class="hero-line"></div>
   <div class="hero-content">
+    <p class="hero-category">Miami Luxury Real Estate</p>
     <h1 class="hero-name">ELIZABETH<br>MESA</h1>
     <span class="hero-rule"></span>
     <p class="hero-tagline">Realtor® at ONE Sotheby's International Realty</p>
