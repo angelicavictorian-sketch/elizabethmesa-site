@@ -66,6 +66,7 @@ nav.scrolled{
   font-size:1rem;font-weight:500;
   letter-spacing:.35em;color:var(--white);
   text-decoration:none;text-transform:uppercase;
+  opacity:0;transition:opacity .5s ease;
 }
 .nav-links{display:flex;gap:40px;list-style:none}
 .nav-links a{
@@ -1031,6 +1032,15 @@ window.addEventListener('scroll', () => {
   }, { threshold: 0.5 });
 
   counters.forEach(function(el){ obs.observe(el); });
+})();
+
+// Nav logo fade — hidden while hero is visible, shown after
+(function(){
+  const logo = document.querySelector('.nav-logo');
+  const hero = document.getElementById('hero');
+  new IntersectionObserver(function(entries){
+    logo.style.opacity = entries[0].isIntersecting ? '0' : '1';
+  }, { threshold: 0 }).observe(hero);
 })();
 </script>
 </body>
