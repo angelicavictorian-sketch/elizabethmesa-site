@@ -150,7 +150,7 @@ nav.scrolled{
   display:flex;align-items:center;justify-content:center;
   gap:16px;margin-bottom:22px;
   font-family:'Montserrat',sans-serif;
-  font-size:.52rem;font-weight:600;
+  font-size:1.15rem;font-weight:600;
   letter-spacing:.42em;color:var(--gold);
   text-transform:uppercase;
 }
@@ -407,7 +407,7 @@ nav.scrolled{
 .a-stat{display:flex;flex-direction:column;gap:4px}
 .a-stat-n{
   font-family:'Cormorant Garamond',serif;
-  font-size:2.6rem;font-weight:300;
+  font-size:4.75rem;font-weight:300;
   color:var(--gold);line-height:1;
 }
 .a-stat-l{
@@ -537,6 +537,50 @@ nav.scrolled{
   transform:translateY(-2px);
 }
 
+/* ── PRESS ── */
+#press{
+  background:var(--c1);
+  padding:64px 64px 72px;
+  border-top:1px solid var(--gold-bdr);
+  border-bottom:1px solid var(--gold-bdr);
+  text-align:center;
+}
+.press-lbl{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:.48rem;font-weight:600;
+  letter-spacing:.46em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:52px;
+}
+.press-lbl::before,.press-lbl::after{
+  content:'';display:block;width:36px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.6));
+}
+.press-lbl::after{
+  background:linear-gradient(90deg,rgba(201,168,76,.6),transparent);
+}
+.press-logos{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:40px 60px;
+  max-width:1100px;margin:0 auto;
+}
+.press-logo-img{
+  height:52px;width:auto;
+  display:block;
+  filter:brightness(0) invert(1);
+  opacity:.42;
+  transition:opacity .3s;
+}
+.press-logo-img:hover{opacity:.7}
+.press-item-text{
+  display:flex;align-items:center;height:52px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:400;font-style:italic;
+  color:rgba(248,245,240,.38);
+  letter-spacing:.04em;line-height:1;
+  transition:color .3s;
+}
+.press-item-text:hover{color:rgba(248,245,240,.62)}
+
 /* ── FOOTER ── */
 footer{
   background:var(--c1);
@@ -587,14 +631,87 @@ footer{
   .props-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
+  /* ── NAV ── */
   nav{padding:18px 24px}
   nav.scrolled{padding:12px 24px}
   .nav-links{display:none}
-  #properties,#about,#testimonials,#contact{padding:80px 24px}
+  .nav-btn{display:none}
+
+  /* ── HERO ── */
+  .hero-name{font-size:clamp(2.8rem,18vw,5rem);letter-spacing:.10em}
+  .hero-category{
+    font-size:.78rem;letter-spacing:.28em;
+    gap:10px;
+  }
+  .hero-category::before,.hero-category::after{width:24px}
+  .hero-tagline{font-size:clamp(.85rem,3.5vw,1.1rem)}
+  .hero-prestige{font-size:.52rem;letter-spacing:.3em;margin-bottom:38px}
+  .hero-cta{padding:16px 34px;font-size:.58rem}
+
+  /* ── PROPERTIES ── */
+  #properties{padding:72px 20px}
+  .props-grid{grid-template-columns:1fr}
+  .prop-img-wrap{height:260px}
+  .props-offmarket-grid{max-width:100%}
+
+  /* ── ABOUT ── */
+  #about{padding:72px 24px}
+  .about-inner{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .about-img-wrap{
+    max-width:100%;
+    margin:0 auto;
+  }
+  .about-frame{display:none}
+  .about-stats{
+    gap:32px;
+    flex-wrap:nowrap;
+    justify-content:center;
+  }
+  .a-stat-n{font-size:3.2rem}
+
+  /* ── TESTIMONIALS ── */
+  #testimonials{padding:72px 24px}
+  .t-grid{grid-template-columns:1fr;gap:24px}
+  .t-card{padding:36px 26px}
+
+  /* ── CONTACT ── */
+  #contact{padding:72px 24px}
+  .contact-details{flex-direction:column;gap:16px}
+  .contact-divider{width:1px;height:28px;background:var(--gold-bdr)}
+  .contact-link{font-size:1rem}
+  .f-row{grid-template-columns:1fr}
+  .f-btn{width:100%;padding:18px 0}
+
+  /* ── PRESS ── */
+  #press{padding:52px 24px 60px}
+  .press-logos{gap:28px 32px}
+  .press-logo-img{height:36px}
+  .press-item-text{font-size:1.2rem;height:36px}
+
+  /* ── FOOTER ── */
   footer{padding:28px 24px;flex-direction:column;gap:14px;text-align:center}
   .ft-links{display:none}
-  .f-row{grid-template-columns:1fr}
-  .about-stats{gap:24px;flex-wrap:wrap}
+}
+
+/* ── VIDEO: pause on mobile, show static gradient ── */
+@media(max-width:768px){
+  .hero-video{display:none}
+  .hero-vid-wrap::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(135deg,#0d0d0d 0%,#1a1208 40%,#0a0a0a 100%);
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  .fi{opacity:1;transform:none;transition:none}
+  .scroll-line{animation:none}
+  .hero-cta::before,.f-btn::before{display:none}
+  .count-n{transition:none}
 }
 </style>
 <meta property="og:title" content="Elizabeth Mesa | Luxury Real Estate">
@@ -622,8 +739,8 @@ footer{
 <section id="hero">
   <div class="hero-vid-wrap">
     <video class="hero-video" src="modern.mp4"     muted playsinline preload="auto"></video>
-    <video class="hero-video" src="chandelier.mp4" muted playsinline preload="auto"></video>
-    <video class="hero-video" src="ocean.mp4"      muted playsinline preload="auto"></video>
+    <video class="hero-video" src="chandelier.mp4" muted playsinline preload="none"></video>
+    <video class="hero-video" src="ocean.mp4"      muted playsinline preload="none"></video>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-stars"></div>
@@ -653,7 +770,7 @@ footer{
 
     <div class="prop-card fi d1">
       <div class="prop-img-wrap">
-        <img src="davie.jpg" alt="13505 SW 37th Place, Davie" class="prop-photo">
+        <img src="davie.jpg" alt="13505 SW 37th Place, Davie" class="prop-photo" loading="lazy">
         <div class="prop-overlay"></div>
         <span class="prop-badge sold">Sold</span>
       </div>
@@ -670,7 +787,7 @@ footer{
 
     <div class="prop-card fi d2">
       <div class="prop-img-wrap">
-        <img src="weston.jpg" alt="16649 N Botaniko Dr N, Weston" class="prop-photo">
+        <img src="weston.jpg" alt="16649 N Botaniko Dr N, Weston" class="prop-photo" loading="lazy">
         <div class="prop-overlay"></div>
         <span class="prop-badge sold">Sold</span>
       </div>
@@ -688,7 +805,7 @@ footer{
 
     <div class="prop-card fi d3">
       <div class="prop-img-wrap">
-        <img src="bellemeade.webp" alt="1133 Belle Meade Island Drive, Miami" class="prop-photo">
+        <img src="bellemeade.webp" alt="1133 Belle Meade Island Drive, Miami" class="prop-photo" loading="lazy">
         <div class="prop-overlay"></div>
         <span class="prop-badge">Active Listing</span>
       </div>
@@ -711,7 +828,7 @@ footer{
     <div class="props-offmarket-grid">
       <div class="prop-card blurred fi">
         <div class="prop-img-wrap">
-          <img src="goldenbeach.webp" alt="Off Market Property" class="prop-photo">
+          <img src="goldenbeach.webp" alt="Off Market Property" class="prop-photo" loading="lazy">
           <div class="prop-overlay"></div>
           <span class="prop-badge offmarket">Off Market</span>
         </div>
@@ -737,27 +854,36 @@ footer{
   <div class="about-inner">
     <div class="about-img-wrap fi">
       <div class="about-img">
-        <img src="elizabeth.jpg" alt="Elizabeth Mesa" class="about-photo">
+        <img src="elizabeth.jpg" alt="Elizabeth Mesa" class="about-photo" loading="lazy">
       </div>
       <div class="about-frame"></div>
     </div>
     <div>
       <span class="lbl fi">About Elizabeth</span>
-      <h2 class="sec-title fi d1">A Name Synonymous<br>With Excellence</h2>
+      <h2 class="sec-title fi d1">Experienced. Knowledgeable.<br>Professional.</h2>
       <div class="rule fi d2"></div>
       <p class="about-text-wrap fi d3">
-        With an exclusive clientele of professional athletes and entertainers, Elizabeth Mesa brings discretion, elegance, and unmatched market expertise to every transaction. Your dream home is not just a purchase — it is a legacy.
+        A Miami native, having personally lived in communities across the entire city ranging from Miami Beach to Doral, she personally understands the nuances of the various neighborhoods like very few people do. Her personal experiences as a community resident, homeowner and real estate investor make her uniquely qualified to assist buyers in their search for their next (or first) property. She specializes in relocations and enjoys assisting clients from the beginning of their search until they are settled into their new home. Her marketing strategies are anything but ordinary, ensuring that properties listed with Elizabeth will stand out.
       </p>
       <p class="about-text-wrap fi d4">
-        Operating at the intersection of privacy and prestige, Elizabeth has cultivated relationships with the world's most discerning buyers and sellers. Her approach is not merely transactional — it is transformational.
+        Elizabeth's strength as an agent comes as no surprise given her professional background. She began her career on the Management Team for the largest infrastructure project in the United States at that time — The Miami Intermodal Center (MIC). While working as the Prime Consultant on projects throughout the city, her love of the unique towns and neighborhoods around Miami grew. Elizabeth's professional work includes the creation of Economic Impact Analysis Reports for Miami-Dade County, meaning she has first-hand knowledge of city plans and forecasts.
+      </p>
+      <p class="about-text-wrap fi d4">
+        Elizabeth personifies a rare breed of residential real estate consultant whose forward thinking and unmatched local knowledge deliver the clear-cut results her clients demand. She provides a custom-tailored approach from consultation to closing. Her ability to tenaciously negotiate on her client's behalf is matched by having their best interests in mind at every stage of the transaction.
+      </p>
+      <p class="about-text-wrap fi d4">
+        Elizabeth's energy and enthusiasm coupled with her strong business acuity guarantee client satisfaction. Her reach and reputation have garnered great relationships with a curated network that spans luxury, tech, innovation, sports and celebrity. Her loyalty and discretion ensure complete professionalism and confidentiality at every touch point.
+      </p>
+      <p class="about-text-wrap fi d4">
+        Among her distinguished clientele, Elizabeth has had the privilege of representing professional athletes, entertainers, and accomplished executives — each transaction handled with the utmost care, confidentiality, and white-glove service they deserve.
       </p>
       <div class="about-stats fi d5">
         <div class="a-stat">
-          <span class="a-stat-n">$400M+</span>
+          <span class="a-stat-n">$<span class="count-n" data-target="400" data-duration="4000">0</span>M+</span>
           <span class="a-stat-l">In Sales</span>
         </div>
         <div class="a-stat">
-          <span class="a-stat-n">100+</span>
+          <span class="a-stat-n"><span class="count-n" data-target="100" data-duration="3500">0</span>+</span>
           <span class="a-stat-l">Luxury Homes</span>
         </div>
       </div>
@@ -822,6 +948,22 @@ footer{
   </div>
 </section>
 
+<!-- PRESS -->
+<section id="press" class="fi">
+  <div class="press-lbl">Featured In</div>
+  <div class="press-logos">
+    <img class="press-logo-img" src="https://www.architecturaldigest.com/verso/static/architectural-digest/assets/logo.svg" alt="Architectural Digest">
+    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Bloomberg_logo.svg" alt="Bloomberg">
+    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Realtor.com_logo.svg" alt="Realtor.com">
+    <span class="press-item-text">JamesEdition</span>
+    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/WSJ_Logo.svg" alt="WSJ">
+    <img class="press-logo-img" src="https://www.mansionglobal.com/img/logo.svg" alt="Mansion Global">
+    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Financial_Times_corporate_logo_%28red%29.svg" alt="Financial Times">
+    <span class="press-item-text">Lands of America</span>
+    <span class="press-item-text">PropGOLuxury.com</span>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <span class="ft-logo">Elizabeth Mesa</span>
@@ -865,6 +1007,37 @@ window.addEventListener('scroll', () => {
 
   vids[0].style.opacity = '1';
   vids[0].play().catch(()=>{});
+})();
+
+/* ── COUNT-UP ANIMATION ── */
+(function(){
+  function easeOutQuart(t){ return 1 - Math.pow(1 - t, 4); }
+
+  function animateCount(el){
+    const target = parseInt(el.dataset.target, 10);
+    const duration = parseInt(el.dataset.duration, 10);
+    const start = performance.now();
+    function tick(now){
+      const elapsed = Math.min(now - start, duration);
+      const progress = easeOutQuart(elapsed / duration);
+      el.textContent = Math.round(progress * target);
+      if(elapsed < duration) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const counters = document.querySelectorAll('.count-n');
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCount(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(function(el){ obs.observe(el); });
 })();
 </script>
 </body>
