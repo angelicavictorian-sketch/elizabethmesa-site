@@ -564,23 +564,73 @@ nav.scrolled{
   flex-wrap:wrap;gap:40px 60px;
   max-width:1100px;margin:0 auto;
 }
-.press-logo-img{
-  height:52px;width:auto;
-  display:block;
-  filter:brightness(0) invert(1);
+.press-name{
+  display:flex;align-items:center;
+  line-height:1;
   opacity:.42;
   transition:opacity .3s;
+  cursor:default;
 }
-.press-logo-img:hover{opacity:.7}
-.press-item-text{
-  display:flex;align-items:center;height:52px;
+.press-name:hover{opacity:.72}
+/* AD */
+.pn-ad{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.55rem;font-weight:400;font-style:italic;
-  color:rgba(248,245,240,.38);
-  letter-spacing:.04em;line-height:1;
-  transition:color .3s;
+  font-size:2.1rem;font-weight:700;
+  letter-spacing:.28em;color:var(--white);
+  text-transform:uppercase;
 }
-.press-item-text:hover{color:rgba(248,245,240,.62)}
+/* Bloomberg */
+.pn-bloomberg{
+  font-family:'Montserrat',sans-serif;
+  font-size:1.05rem;font-weight:500;
+  letter-spacing:.06em;color:var(--white);
+}
+/* realtor.com */
+.pn-realtor{
+  font-family:'Montserrat',sans-serif;
+  font-size:.95rem;font-weight:600;
+  letter-spacing:.04em;color:var(--white);
+}
+.pn-realtor .dot{color:#D92228;font-size:1.2em;line-height:0;vertical-align:-.05em}
+/* WSJ */
+.pn-wsj{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:700;
+  letter-spacing:.22em;color:var(--white);
+  text-transform:uppercase;
+}
+/* JamesEdition */
+.pn-james{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:300;font-style:italic;
+  letter-spacing:.08em;color:var(--white);
+}
+/* Mansion Global */
+.pn-mansion{
+  font-family:'Montserrat',sans-serif;
+  font-size:.68rem;font-weight:300;
+  letter-spacing:.38em;color:var(--white);
+  text-transform:uppercase;
+}
+/* Financial Times */
+.pn-ft{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:500;
+  letter-spacing:.05em;color:#e8967a;
+}
+/* Lands of America */
+.pn-lands{
+  font-family:'Montserrat',sans-serif;
+  font-size:.72rem;font-weight:400;
+  letter-spacing:.18em;color:var(--white);
+  text-transform:uppercase;
+}
+/* PropGOLuxury */
+.pn-prop{
+  font-family:'Montserrat',sans-serif;
+  font-size:.78rem;font-weight:300;
+  letter-spacing:.12em;color:var(--white);
+}
 
 /* ── FOOTER ── */
 footer{
@@ -689,9 +739,14 @@ footer{
 
   /* ── PRESS ── */
   #press{padding:52px 24px 60px}
-  .press-logos{gap:28px 32px}
-  .press-logo-img{height:36px}
-  .press-item-text{font-size:1.2rem;height:36px}
+  .press-logos{gap:24px 28px}
+  .pn-ad{font-size:1.6rem}
+  .pn-wsj{font-size:1.5rem}
+  .pn-bloomberg,.pn-realtor{font-size:.82rem}
+  .pn-james{font-size:1.1rem}
+  .pn-mansion{font-size:.58rem;letter-spacing:.28em}
+  .pn-ft{font-size:1.05rem}
+  .pn-lands,.pn-prop{font-size:.62rem}
 
   /* ── FOOTER ── */
   footer{padding:28px 24px;flex-direction:column;gap:14px;text-align:center}
@@ -946,15 +1001,15 @@ footer{
 <section id="press" class="fi">
   <div class="press-lbl">Featured In</div>
   <div class="press-logos">
-    <img class="press-logo-img" src="https://www.architecturaldigest.com/verso/static/architectural-digest/assets/logo.svg" alt="Architectural Digest">
-    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Bloomberg_logo.svg" alt="Bloomberg">
-    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Realtor.com_logo.svg" alt="Realtor.com">
-    <span class="press-item-text">JamesEdition</span>
-    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/WSJ_Logo.svg" alt="WSJ">
-    <img class="press-logo-img" src="https://www.mansionglobal.com/img/logo.svg" alt="Mansion Global">
-    <img class="press-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Financial_Times_corporate_logo_%28red%29.svg" alt="Financial Times">
-    <span class="press-item-text">Lands of America</span>
-    <span class="press-item-text">PropGOLuxury.com</span>
+    <span class="press-name pn-ad">AD</span>
+    <span class="press-name pn-bloomberg">Bloomberg</span>
+    <span class="press-name pn-realtor">realtor<span class="dot">.</span>com</span>
+    <span class="press-name pn-james">JamesEdition</span>
+    <span class="press-name pn-wsj">WSJ</span>
+    <span class="press-name pn-mansion">Mansion Global</span>
+    <span class="press-name pn-ft">Financial Times</span>
+    <span class="press-name pn-lands">Lands of America</span>
+    <span class="press-name pn-prop">PropGOLuxury.com</span>
   </div>
 </section>
 
