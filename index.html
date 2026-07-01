@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elizabeth Mesa | Luxury Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:    #050505;
+  --c1:       #0d0d0d;
+  --c2:       #141414;
+  --c3:       #1e1e1e;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --gold-dim: rgba(201,168,76,0.15);
+  --gold-bdr: rgba(201,168,76,0.28);
+  --white:    #f8f5f0;
+  --w60:      rgba(248,245,240,0.6);
+  --w30:      rgba(248,245,240,0.3);
+  --w10:      rgba(248,245,240,0.08);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* film grain overlay */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:26px 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .4s ease;
+}
+nav.scrolled{
+  background:rgba(5,5,5,.93);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  padding:16px 64px;
+  border-bottom:1px solid var(--gold-bdr);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:500;
+  letter-spacing:.35em;color:var(--white);
+  text-decoration:none;text-transform:uppercase;
+}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{
+  font-size:.6rem;font-weight:500;
+  letter-spacing:.2em;color:var(--w60);
+  text-decoration:none;text-transform:uppercase;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-btn{
+  font-size:.58rem;font-weight:600;
+  letter-spacing:.2em;color:var(--gold);
+  text-decoration:none;text-transform:uppercase;
+  border:1px solid var(--gold-bdr);
+  padding:10px 24px;transition:all .3s;
+}
+.nav-btn:hover{background:var(--gold);color:var(--black)}
+
+/* ── HERO ── */
+#hero{
+  position:relative;height:100vh;min-height:680px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+/* ── HERO VIDEO SLIDESHOW ── */
+.hero-vid-wrap{position:absolute;inset:0;z-index:0}
+.hero-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.42) 40%,rgba(0,0,0,.62) 100%);
+}
+/* star field */
+.hero-stars{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hero-stars::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(1px 1px at  8% 12%, rgba(255,255,255,.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 22%  6%, rgba(255,255,255,.3)  0%,transparent 100%),
+    radial-gradient(1px 1px at 37% 20%, rgba(255,255,255,.35) 0%,transparent 100%),
+    radial-gradient(1px 1px at 51%  4%, rgba(255,255,255,.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 66% 16%, rgba(255,255,255,.3)  0%,transparent 100%),
+    radial-gradient(1px 1px at 79%  9%, rgba(255,255,255,.4)  0%,transparent 100%),
+    radial-gradient(1px 1px at 91% 23%, rgba(255,255,255,.3)  0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at  4% 44%, rgba(201,168,76,.55) 0%,transparent 100%),
+    radial-gradient(1px 1px at 28% 36%, rgba(255,255,255,.2)  0%,transparent 100%),
+    radial-gradient(1px 1px at 44% 28%, rgba(255,255,255,.2)  0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 40%, rgba(201,168,76,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 74% 33%, rgba(255,255,255,.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 46%, rgba(255,255,255,.2)  0%,transparent 100%),
+    radial-gradient(1px 1px at 14% 58%, rgba(255,255,255,.15) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 32% 52%, rgba(201,168,76,.3) 0%,transparent 100%);
+}
+/* vertical accent line */
+.hero-line{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:1px;height:160px;z-index:2;
+  background:linear-gradient(to top, rgba(201,168,76,.35), transparent);
+}
+.hero-line::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:50px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.35),transparent);
+}
+
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;padding:0 20px;
+}
+.hero-eyebrow{
+  display:block;
+  font-size:.58rem;font-weight:600;
+  letter-spacing:.5em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:30px;
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(4rem,10vw,9.5rem);
+  font-weight:300;letter-spacing:.16em;
+  color:var(--white);text-transform:uppercase;
+  line-height:.88;
+}
+.hero-rule{
+  display:block;
+  width:130px;height:1px;margin:28px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(.95rem,2.2vw,1.45rem);
+  font-weight:300;font-style:italic;
+  color:var(--white);letter-spacing:.06em;
+  margin-bottom:14px;
+}
+.hero-prestige{
+  font-family:'Montserrat',sans-serif;
+  font-size:.58rem;font-weight:600;
+  letter-spacing:.45em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:54px;
+}
+.hero-cta{
+  display:inline-block;
+  font-size:.62rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--black);background:var(--gold);
+  padding:19px 48px;text-decoration:none;
+  position:relative;overflow:hidden;
+  transition:all .4s ease;
+  box-shadow:0 0 44px rgba(201,168,76,.35), 0 0 90px rgba(201,168,76,.12);
+}
+.hero-cta::before{
+  content:'';position:absolute;top:0;left:-110%;
+  width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+  transition:left .55s ease;
+}
+.hero-cta:hover::before{left:110%}
+.hero-cta:hover{
+  box-shadow:0 0 65px rgba(201,168,76,.55), 0 0 130px rgba(201,168,76,.22);
+  transform:translateY(-2px);
+}
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;z-index:2;
+}
+.hero-scroll span{
+  font-size:.5rem;letter-spacing:.35em;
+  color:var(--w30);text-transform:uppercase;
+}
+.scroll-line{
+  width:1px;height:48px;
+  background:linear-gradient(to bottom,rgba(201,168,76,.4),transparent);
+  animation:pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.08)}}
+
+/* ── SHARED ── */
+.lbl{
+  display:block;
+  font-size:.52rem;font-weight:600;
+  letter-spacing:.42em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:14px;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,3.8vw,3.4rem);
+  font-weight:300;letter-spacing:.04em;
+  color:var(--white);line-height:1.1;
+}
+.rule{
+  width:60px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin:22px 0;
+}
+.rule.ctr{
+  width:100px;margin:22px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.sep{
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-bdr),transparent);
+}
+
+/* ── PROPERTIES ── */
+#properties{
+  padding:120px 64px;
+  background:var(--c1);
+}
+.props-hd{text-align:center;margin-bottom:68px}
+.props-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;max-width:1400px;margin:0 auto;
+}
+.prop-card{
+  position:relative;overflow:hidden;
+  cursor:pointer;background:var(--c2);
+  display:flex;flex-direction:column;
+}
+.prop-info{flex:1}
+.prop-card:hover .prop-overlay{opacity:1}
+
+.prop-img-wrap{position:relative;height:370px;overflow:hidden}
+.prop-photo{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;
+  transition:transform .9s cubic-bezier(.25,.46,.45,.94);
+}
+.prop-card:hover .prop-photo{transform:scale(1.06)}
+
+.prop-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,5,5,.96) 0%,rgba(5,5,5,.25) 55%,transparent 100%);
+  opacity:.65;transition:opacity .4s;
+}
+.prop-badge{
+  position:absolute;top:18px;right:18px;z-index:2;
+  font-size:.48rem;font-weight:600;
+  letter-spacing:.25em;color:var(--black);
+  background:var(--gold);padding:6px 14px;
+  text-transform:uppercase;
+}
+.prop-badge.sold{background:#6b1928;color:var(--white)}
+.prop-badge.offmarket{background:#1c1c1c;color:var(--w60);letter-spacing:.18em}
+.props-offmarket{margin-top:52px;text-align:center}
+.props-offmarket-lbl{
+  font-size:.5rem;font-weight:600;
+  letter-spacing:.48em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:22px;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+}
+.props-offmarket-lbl::before,.props-offmarket-lbl::after{
+  content:'';display:block;
+  width:48px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-bdr));
+}
+.props-offmarket-lbl::after{
+  background:linear-gradient(90deg,var(--gold-bdr),transparent);
+}
+.props-offmarket-grid{max-width:460px;margin:0 auto}
+.prop-card.blurred .prop-photo{
+  filter:blur(7px);
+  transform:scale(1.08);
+}
+.prop-card.blurred:hover .prop-photo{transform:scale(1.12)}
+.prop-card.blurred .prop-info{
+  filter:blur(5px);
+  user-select:none;
+}
+.prop-info{
+  padding:28px 34px 34px;
+  background:var(--c2);
+  border-top:1px solid var(--gold-bdr);
+}
+.prop-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.9rem;font-weight:400;
+  color:var(--gold);margin-bottom:8px;
+  letter-spacing:.02em;
+}
+.prop-addr{
+  font-size:.68rem;font-weight:600;
+  letter-spacing:.1em;color:var(--white);
+  text-transform:uppercase;margin-bottom:4px;
+}
+.prop-loc{
+  font-size:.58rem;font-weight:300;
+  color:var(--w60);margin-bottom:20px;
+}
+.prop-specs{
+  display:flex;gap:22px;
+  border-top:1px solid var(--w10);padding-top:14px;
+}
+.spec{display:flex;flex-direction:column;gap:2px}
+.spec-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;color:var(--white);
+}
+.spec-lbl{
+  font-size:.48rem;font-weight:500;
+  letter-spacing:.15em;color:var(--w60);
+  text-transform:uppercase;
+}
+
+/* ── ABOUT ── */
+#about{
+  position:relative;
+  padding:140px 64px;
+  background:var(--black);
+}
+.about-inner{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:100px;align-items:center;
+}
+.about-img-wrap{position:relative}
+.about-img{
+  width:100%;aspect-ratio:4/5;
+  position:relative;overflow:hidden;
+}
+.about-photo{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  display:block;
+  filter:grayscale(22%) sepia(12%) brightness(0.86) contrast(1.04);
+}
+.about-img::before{
+  content:'';
+  position:absolute;inset:0;z-index:1;
+  background:rgba(201,168,76,.09);
+  mix-blend-mode:multiply;
+  pointer-events:none;
+}
+.about-img::after{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:radial-gradient(ellipse at 50% 38%,transparent 30%,rgba(0,0,0,.72) 100%);
+  pointer-events:none;
+}
+.about-frame{
+  position:absolute;
+  top:18px;left:18px;right:-18px;bottom:-18px;
+  border:1px solid var(--gold-bdr);z-index:-1;
+}
+.about-text-wrap{
+  font-family:'Montserrat',sans-serif;
+  font-size:.78rem;font-weight:300;
+  line-height:2.1;color:var(--w60);
+  margin-bottom:36px;
+}
+.about-stats{
+  display:flex;gap:44px;
+  justify-content:center;
+  padding-top:36px;
+  border-top:1px solid var(--w10);
+}
+.a-stat{display:flex;flex-direction:column;gap:4px}
+.a-stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6rem;font-weight:300;
+  color:var(--gold);line-height:1;
+}
+.a-stat-l{
+  font-size:.52rem;font-weight:500;
+  letter-spacing:.2em;color:var(--w60);
+  text-transform:uppercase;
+}
+
+/* ── TESTIMONIALS ── */
+#testimonials{
+  position:relative;
+  padding:120px 64px;
+  background:var(--c1);overflow:hidden;
+}
+#testimonials::before{
+  content:'\201C';
+  position:absolute;top:-100px;left:50%;
+  transform:translateX(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:480px;line-height:1;
+  color:rgba(201,168,76,.025);
+  pointer-events:none;
+}
+.t-hd{text-align:center;margin-bottom:76px}
+.t-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:36px;max-width:1200px;margin:0 auto;
+}
+.t-card{
+  padding:46px 38px;
+  border:1px solid var(--gold-bdr);
+  background:rgba(201,168,76,.018);
+  position:relative;
+}
+.t-card::before{
+  content:'\201C';
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;color:var(--gold);opacity:.45;
+  position:absolute;top:18px;left:28px;line-height:1;
+}
+.t-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.12rem;font-weight:300;font-style:italic;
+  color:var(--white);line-height:1.85;
+  margin-top:28px;margin-bottom:30px;
+}
+.t-name{
+  font-size:.62rem;font-weight:600;
+  letter-spacing:.2em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:3px;
+}
+.t-role{
+  font-size:.58rem;font-weight:300;
+  color:var(--w60);letter-spacing:.04em;
+}
+
+/* ── CONTACT ── */
+#contact{
+  position:relative;
+  padding:140px 64px;
+  background:var(--black);
+}
+.contact-inner{
+  max-width:680px;margin:0 auto;text-align:center;
+}
+.contact-details{
+  display:flex;align-items:center;justify-content:center;
+  gap:28px;margin-bottom:52px;
+}
+.contact-link{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:400;
+  letter-spacing:.06em;color:var(--gold);
+  text-decoration:none;
+  transition:opacity .3s;
+}
+.contact-link:hover{opacity:.7}
+.contact-divider{
+  display:block;width:40px;height:1px;
+  background:var(--gold-bdr);flex-shrink:0;
+}
+.contact-sub{
+  font-size:.76rem;font-weight:300;
+  line-height:1.9;color:var(--w60);
+  margin:0 auto 58px;max-width:500px;
+}
+.form{display:flex;flex-direction:column;gap:18px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fg input,
+.fg textarea{
+  width:100%;background:transparent;
+  border:none;border-bottom:1px solid rgba(255,255,255,.14);
+  color:var(--white);
+  font-family:'Montserrat',sans-serif;
+  font-size:.76rem;font-weight:300;
+  letter-spacing:.04em;
+  padding:15px 0;outline:none;
+  transition:border-color .3s;
+}
+.fg input::placeholder,.fg textarea::placeholder{
+  color:rgba(255,255,255,.24);
+  font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.fg input:focus,.fg textarea:focus{border-bottom-color:var(--gold)}
+.fg textarea{resize:none;min-height:96px}
+.f-btn{
+  font-family:'Montserrat',sans-serif;
+  font-size:.62rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--black);background:var(--gold);
+  border:none;padding:20px 60px;
+  cursor:pointer;margin-top:18px;
+  position:relative;overflow:hidden;
+  transition:all .35s;
+  box-shadow:0 0 34px rgba(201,168,76,.22);
+}
+.f-btn::before{
+  content:'';position:absolute;top:0;left:-110%;
+  width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);
+  transition:left .5s;
+}
+.f-btn:hover::before{left:110%}
+.f-btn:hover{
+  box-shadow:0 0 55px rgba(201,168,76,.45);
+  transform:translateY(-2px);
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--c1);
+  padding:38px 64px;
+  border-top:1px solid var(--gold-bdr);
+  display:flex;align-items:center;
+  justify-content:space-between;
+}
+.ft-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.9rem;font-weight:500;
+  letter-spacing:.32em;color:var(--white);
+  text-transform:uppercase;
+}
+.ft-copy{
+  font-size:.52rem;font-weight:400;
+  letter-spacing:.14em;color:var(--w60);
+}
+.ft-links{display:flex;gap:22px;list-style:none}
+.ft-links a{
+  font-size:.52rem;font-weight:400;
+  letter-spacing:.1em;color:var(--w60);
+  text-decoration:none;text-transform:uppercase;
+  transition:color .3s;
+}
+.ft-links a:hover{color:var(--gold)}
+
+/* ── SCROLL ANIMATION ── */
+.fi{
+  opacity:0;transform:translateY(36px);
+  transition:opacity .85s cubic-bezier(.25,.46,.45,.94),
+              transform .85s cubic-bezier(.25,.46,.45,.94);
+}
+.fi.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.22s}
+.d3{transition-delay:.34s}
+.d4{transition-delay:.46s}
+.d5{transition-delay:.58s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .about-inner{grid-template-columns:1fr;gap:60px}
+  .about-img-wrap{max-width:380px;margin:0 auto}
+  .t-grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  .props-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:18px 24px}
+  nav.scrolled{padding:12px 24px}
+  .nav-links{display:none}
+  #properties,#about,#testimonials,#contact{padding:80px 24px}
+  footer{padding:28px 24px;flex-direction:column;gap:14px;text-align:center}
+  .ft-links{display:none}
+  .f-row{grid-template-columns:1fr}
+  .about-stats{gap:24px;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Elizabeth Mesa</a>
+  <ul class="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Inquire Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-vid-wrap">
+    <video class="hero-video" src="modern.mp4"     muted playsinline preload="auto"></video>
+    <video class="hero-video" src="chandelier.mp4" muted playsinline preload="auto"></video>
+    <video class="hero-video" src="ocean.mp4"      muted playsinline preload="auto"></video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-stars"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <h1 class="hero-name">ELIZABETH<br>MESA</h1>
+    <span class="hero-rule"></span>
+    <p class="hero-tagline">Realtor® at ONE Sotheby's International Realty</p>
+    <p class="hero-prestige">Top 1% in the USA</p>
+    <a href="#contact" class="hero-cta">Book a Consultation</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="props-hd fi">
+    <span class="lbl">Recent Sales</span>
+    <h2 class="sec-title">Extraordinary Properties</h2>
+    <div class="rule ctr"></div>
+  </div>
+  <div class="props-grid">
+
+    <div class="prop-card fi d1">
+      <div class="prop-img-wrap">
+        <img src="davie.jpg" alt="13505 SW 37th Place, Davie" class="prop-photo">
+        <div class="prop-overlay"></div>
+        <span class="prop-badge sold">Sold</span>
+      </div>
+      <div class="prop-info">
+        <div class="prop-price">$3,140,000</div>
+        <div class="prop-addr">13505 SW 37th Place</div>
+        <div class="prop-loc">Davie, FL 33330</div>
+        <div class="prop-specs">
+          <div class="spec"><span class="spec-val">4</span><span class="spec-lbl">Beds</span></div>
+          <div class="spec"><span class="spec-val">4½</span><span class="spec-lbl">Baths</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop-card fi d2">
+      <div class="prop-img-wrap">
+        <img src="weston.jpg" alt="16649 N Botaniko Dr N, Weston" class="prop-photo">
+        <div class="prop-overlay"></div>
+        <span class="prop-badge sold">Sold</span>
+      </div>
+      <div class="prop-info">
+        <div class="prop-price">$3,820,000</div>
+        <div class="prop-addr">16649 N Botaniko Dr N</div>
+        <div class="prop-loc">Weston, FL 33326</div>
+        <div class="prop-specs">
+          <div class="spec"><span class="spec-val">7</span><span class="spec-lbl">Beds</span></div>
+          <div class="spec"><span class="spec-val">8½</span><span class="spec-lbl">Baths</span></div>
+          <div class="spec"><span class="spec-val">7,305</span><span class="spec-lbl">Sq Ft</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prop-card fi d3">
+      <div class="prop-img-wrap">
+        <img src="bellemeade.webp" alt="1133 Belle Meade Island Drive, Miami" class="prop-photo">
+        <div class="prop-overlay"></div>
+        <span class="prop-badge">Active Listing</span>
+      </div>
+      <div class="prop-info">
+        <div class="prop-price">$22,899,800</div>
+        <div class="prop-addr">1133 Belle Meade Island Drive</div>
+        <div class="prop-loc">Miami, FL 33138</div>
+        <div class="prop-specs">
+          <div class="spec"><span class="spec-val">7</span><span class="spec-lbl">Beds</span></div>
+          <div class="spec"><span class="spec-val">5½</span><span class="spec-lbl">Baths</span></div>
+          <div class="spec"><span class="spec-val">7,435</span><span class="spec-lbl">Sq Ft</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="props-offmarket fi">
+    <div class="props-offmarket-lbl">Exclusively Off Market</div>
+    <div class="props-offmarket-grid">
+      <div class="prop-card blurred fi">
+        <div class="prop-img-wrap">
+          <img src="goldenbeach.webp" alt="Off Market Property" class="prop-photo">
+          <div class="prop-overlay"></div>
+          <span class="prop-badge offmarket">Off Market</span>
+        </div>
+        <div class="prop-info">
+          <div class="prop-price">$89,000,000</div>
+          <div class="prop-addr">355 Ocean Blvd</div>
+          <div class="prop-loc">Golden Beach, FL 33160</div>
+          <div class="prop-specs">
+            <div class="spec"><span class="spec-val">13</span><span class="spec-lbl">Beds</span></div>
+            <div class="spec"><span class="spec-val">21</span><span class="spec-lbl">Baths</span></div>
+            <div class="spec"><span class="spec-val">23,695</span><span class="spec-lbl">Sq Ft</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sep"></div>
+  <div class="about-inner">
+    <div class="about-img-wrap fi">
+      <div class="about-img">
+        <img src="elizabeth.jpg" alt="Elizabeth Mesa" class="about-photo">
+      </div>
+      <div class="about-frame"></div>
+    </div>
+    <div>
+      <span class="lbl fi">About Elizabeth</span>
+      <h2 class="sec-title fi d1">A Name Synonymous<br>With Excellence</h2>
+      <div class="rule fi d2"></div>
+      <p class="about-text-wrap fi d3">
+        With an exclusive clientele of professional athletes and entertainers, Elizabeth Mesa brings discretion, elegance, and unmatched market expertise to every transaction. Your dream home is not just a purchase — it is a legacy.
+      </p>
+      <p class="about-text-wrap fi d4">
+        Operating at the intersection of privacy and prestige, Elizabeth has cultivated relationships with the world's most discerning buyers and sellers. Her approach is not merely transactional — it is transformational.
+      </p>
+      <div class="about-stats fi d5">
+        <div class="a-stat">
+          <span class="a-stat-n">$400M+</span>
+          <span class="a-stat-l">In Sales</span>
+        </div>
+        <div class="a-stat">
+          <span class="a-stat-n">100+</span>
+          <span class="a-stat-l">Luxury Homes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="t-hd fi">
+    <span class="lbl">Client Voices</span>
+    <h2 class="sec-title">Words From Those<br>Who Know</h2>
+    <div class="rule ctr"></div>
+  </div>
+  <div class="t-grid">
+
+    <div class="t-card fi d1">
+      <p class="t-quote">
+        Elizabeth is a marketing genius. Her professionalism and skills were instrumental in selling my home in Porto Vita in Aventura. Her expertise and innovative marketing strategies ensured a smooth and successful transaction. She's the best and I recommend her to everyone.
+      </p>
+    </div>
+
+    <div class="t-card fi d2">
+      <p class="t-quote">
+        I have had the pleasure of working with Elizabeth Mesa on numerous real estate deals, and I must say, her professionalism and expertise is outstanding. Agent Mesa demonstrates deep knowledge of residential property and commercial real estate. Her proactive approach and attention to her client's needs and expectations ensures that every aspect of the deal is handled smoothly and efficiently making all of our transactions seamless. Elizabeth Mesa exhibits a commitment to excellence that exceeds all parties' expectations. Her dedication to client satisfaction and her ability to navigate complex closings with ease is truly commendable. I highly recommend Elizabeth Mesa to anyone seeking a real estate professional who goes above and beyond to deliver excellent service. Thank you, Agent Mesa, for your exceptional expertise and professionalism in every closing. You are a true gem!
+      </p>
+    </div>
+
+    <div class="t-card fi d3">
+      <p class="t-quote">
+        Elizabeth is a marketing genius. Her professionalism and skills were instrumental in selling my home in Porto Vita in Aventura. Her expertise and innovative marketing strategies ensured a smooth and successful transaction. She's the best and I recommend her to everyone.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sep"></div>
+  <div class="contact-inner">
+    <span class="lbl fi">Get In Touch</span>
+    <h2 class="sec-title fi d1">Begin Your Journey<br>To Exceptional Living</h2>
+    <div class="rule ctr fi d2"></div>
+    <p class="contact-sub fi d3">
+      Every extraordinary home begins with a conversation. Reach out to Elizabeth directly — your privacy and discretion are always paramount.
+    </p>
+    <div class="contact-details fi d4">
+      <a href="tel:3058041549" class="contact-link">305.804.1549</a>
+      <span class="contact-divider"></span>
+      <a href="mailto:emesa@onesothebysrealty.com" class="contact-link">emesa@onesothebysrealty.com</a>
+    </div>
+    <form class="form fi d5" onsubmit="return false;">
+      <div class="f-row">
+        <div class="fg"><input type="text" placeholder="Your Name"></div>
+        <div class="fg"><input type="email" placeholder="Your Email"></div>
+      </div>
+      <div class="fg"><input type="tel" placeholder="Your Phone"></div>
+      <div class="fg"><textarea placeholder="Tell us about your vision..."></textarea></div>
+      <button type="submit" class="f-btn">Request a Private Consultation</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-logo">Elizabeth Mesa</span>
+  <span class="ft-copy">© 2025 Elizabeth Mesa | Luxury Real Estate</span>
+  <ul class="ft-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Listings</a></li>
+    <li><a href="#">Instagram</a></li>
+  </ul>
+</footer>
+
+<script>
+// Scroll fade-in
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+// Nav on scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 70);
+}, { passive: true });
+
+// Video slideshow
+(function(){
+  const vids = Array.from(document.querySelectorAll('.hero-video'));
+  let cur = 0;
+
+  function goNext() {
+    const prev = vids[cur];
+    cur = (cur + 1) % vids.length;
+    const next = vids[cur];
+    next.currentTime = 0;
+    next.play().catch(()=>{});
+    next.style.opacity = '1';
+    setTimeout(()=>{ prev.style.opacity = '0'; }, 700);
+  }
+
+  vids.forEach(v => v.addEventListener('ended', goNext));
+
+  vids[0].style.opacity = '1';
+  vids[0].play().catch(()=>{});
+})();
+</script>
+</body>
+</html>
